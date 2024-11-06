@@ -11,7 +11,7 @@ This project implements algorithms to optimize the planning of a fiber optics ne
 
 4. **Voronoi Diagram**: Generates Voronoi cells for exchanges based on the given coordinates, which can be used for further geographical analysis.
 
-For detailed explanations of the algorithms and their implementations, please refer to the **[Project Report](report.pdf)** included in the repository.
+For detailed explanations of the algorithms and their implementations, please refer to the **[Project Report](int_act_2.pdf)** included in the repository.
 
 ---
 
