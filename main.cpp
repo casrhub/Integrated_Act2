@@ -190,7 +190,6 @@ int tspHeldKarp(int numNodes, vector<vector<int>> &graph, vector<int> &optimalPa
     }
 
     // Backtracking to find the optimal path
-    optimalPath.push_back(0); // Start from node 0
     int current_mask = mask;
     int current_node = last;
 
