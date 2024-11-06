@@ -1,0 +1,25 @@
+cmake_minimum_required(VERSION 3.10)
+project(NeighborhoodFiberOptics)
+
+# Specify the C++ standard
+set(CMAKE_CXX_STANDARD 11)
+
+# Find and link CGAL
+find_package(CGAL REQUIRED COMPONENTS Core)
+
+# Optionally link SFML if you're using it for graphical output
+# find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
+
+# Add the executable for the main code file
+add_executable(NeighborhoodFiberOptics main.cpp)
+
+# Link CGAL libraries
+target_link_libraries(NeighborhoodFiberOptics CGAL::CGAL)
+
+# Link SFML libraries if needed
+# target_link_libraries(NeighborhoodFiberOptics sfml-graphics sfml-window sfml-system)
+
+# Set build type to Release for better performance
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Release)
+endif()
