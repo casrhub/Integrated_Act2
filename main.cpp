@@ -7,6 +7,13 @@
 #include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
 #include <CGAL/Delaunay_triangulation_2.h>
 
+/* Team members: 
+César Alán Silva Ramos
+José María Soto Valenzuela
+German Avelino Del Rio Guzman 
+
+*/
+
 /*
  * Steps to compile and run this program on a Linux system:
  *
