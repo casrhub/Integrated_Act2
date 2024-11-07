@@ -49,6 +49,7 @@ struct Edge
     int weight; // Weight of the edge (e.g., distance)
 };
 
+
 // Union-Find Disjoint Set class for Kruskal's Algorithm
 class UnionFind
 {
@@ -249,6 +250,19 @@ bool dfs(vector<vector<int>> &residualGraph, int current, int sink, vector<int> 
     return false;
 }
 
+bool arePointsColinear(const vector<Point>& points) {
+    if (points.size() < 3) return true; // Less than 3 points are always colinear
+    auto p0 = points[0];
+    auto p1 = points[1];
+    for (size_t i = 2; i < points.size(); ++i) {
+        auto p = points[i];
+        // Calculate the area of the triangle formed by p0, p1, and p
+        double area = (p0.x() * (p1.y() - p.y()) + p1.x() * (p.y() - p0.y()) + p.x() * (p0.y() - p1.y())) / 2.0;
+        if (abs(area) > 1e-6) return false; // Points are not colinear
+    }
+    return true; // All points are colinear
+}
+
 // Main function to calculate the maximum flow from 'source' to 'sink' in the graph
 int maxFlow(vector<vector<int>> &graph, int source, int sink)
 {
@@ -364,13 +378,21 @@ int main()
     int max_flow = maxFlow(capacityMatrix, sourceNode, sinkNode);
     cout << "3. Maximum information flow value from the initial node to the final node: " << max_flow << endl;
 
-    // Part 4
+
+    
       // Part 4: Compute and Output Voronoi Polygons for Each Exchange
-    Delaunay delaunay;
+    
     vector<Point> points;
     for (const auto& coord : coordinates)
         points.emplace_back(coord.first, coord.second);
+
+
+    if (arePointsColinear(points)) {
+    cout << "4. Voronoi cells cannot be computed because all points are colinear." << endl;
+} else {
+    Delaunay delaunay;
     delaunay.insert(points.begin(), points.end());
+
 
     map<Point, vector<pair<double, double>>> voronoi_polygons;
     for (auto vertex = delaunay.finite_vertices_begin(); vertex != delaunay.finite_vertices_end(); ++vertex) {
@@ -407,6 +429,8 @@ dir = dir / std::sqrt(dir.squared_length()); // Normalize the direction vector
             cout << "(" << vertex.first << ", " << vertex.second << ") ";
         cout << endl;
     }
+}
+
 
     return 0;
 }
